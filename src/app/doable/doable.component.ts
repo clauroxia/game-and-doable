@@ -19,6 +19,7 @@ import { UnauthenticatedComponent } from './ui/unauthenticated/unauthenticated.c
   `,
   styleUrl: './doable.component.css',
 })
-export class DoableComponent {
+
+export default class DoableComponent {
   isAuthenticated = false;
 }

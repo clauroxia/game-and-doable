@@ -47,7 +47,7 @@ import { CommonModule } from '@angular/common';
   `,
   styleUrl: './color-game.component.css',
 })
-export class ColorGameComponent {
+export default class ColorGameComponent {
   rgbString = rgbString;
   numOfColors = 6;
   statusMessages = {
