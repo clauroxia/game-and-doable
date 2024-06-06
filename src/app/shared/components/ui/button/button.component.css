@@ -1,0 +1,26 @@
+.button {
+  height: 2.5rem;
+  padding: var(--spacing-2) var(--spacing-4);
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-2);
+  border: 1px solid transparent;
+  border-radius: var(--rounded-md);
+  background-color: var(--primary);
+  cursor: pointer;
+
+  font-size: var(--font-sm);
+  color: var(--primary-foreground);
+  line-height: var(--leading-5);
+  font-weight: 500;
+}
+
+.button--outline {
+  border-color: var(--border);
+  background-color: var(--background);
+  color: var(--secondary-foreground);
+}
+
+.button--outline:hover {
+  background-color: var(--background-hover);
+}
