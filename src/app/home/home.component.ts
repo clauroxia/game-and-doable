@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     <div class="wrapper">
       <img src="assets/angular.svg" width="96" />
       <h1 class="title">React Evaluation</h1>
-      <p class="name">Nombre Apellido</p>
+      <p class="name">Claudia Berríos</p>
       <div class="buttons">
         <a href="color-game"> Color Game </a>
         <a href="doable"> Doable </a>
