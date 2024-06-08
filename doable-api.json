@@ -369,7 +369,7 @@
       "created": 1633053234594,
       "name": "heroku",
       "data": {
-        "baseUrl": "https://doable-api.herokuapp.com",
+        "baseUrl": "https://doable-api-production.up.railway.app",
         "token": "vuf8og8XL2JTmETLejTfLt3b"
       },
       "dataPropertyOrder": { "&": ["baseUrl", "token"] },
