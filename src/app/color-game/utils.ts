@@ -10,14 +10,15 @@ export function getRandomColor(): Color {
 
 export function rgbString(color: Color) {
   const [r, g, b] = color;
-  return `rgb(${r}, ${g}, ${b})`;
+  const rgb = `rgb(${r}, ${g}, ${b})`;
+  return { rgb, r, g, b };
 }
 
 export function getRandomColors(n: number): Color[] {
   return [...Array(n)].map(() => getRandomColor());
 }
 
-export function getStatus(
+export function getStatus(  
   attempts: number[],
   target: number,
   numOfColors: number
