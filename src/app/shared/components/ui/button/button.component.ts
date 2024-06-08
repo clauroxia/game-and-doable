@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <button [ngClass]="{ button: true, 'button--outline': buttonOutline }">
+    <button [ngClass]="{ button: true, 'button--outline': buttonOutline }" (click)="handleClick()">
       {{ textButton }}
     </button>
   `,
@@ -15,4 +15,9 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
   @Input() textButton!: string;
   @Input() buttonOutline: boolean = false;
+  @Output() clicked = new EventEmitter<void>();
+
+  handleClick() {
+    this.clicked.emit();
+  }
 }

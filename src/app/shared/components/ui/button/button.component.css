@@ -15,6 +15,14 @@
   font-weight: 500;
 }
 
+.button:hover {
+  background-color: var(--primary-hover);
+}
+
+.button:active {
+  background-color: var(--primary-active);
+} 
+
 .button--outline {
   border-color: var(--border);
   background-color: var(--background);
