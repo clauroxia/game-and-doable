@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-4, 16px) var(--spacing-2, 8px);
+  gap: var(--spacing-4, 16px);
+  
+}
+
+.group{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2, 8px);
+  
+}
