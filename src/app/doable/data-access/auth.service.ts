@@ -3,7 +3,6 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { NEVER, Subject, catchError, switchMap, tap } from 'rxjs';
 import { AuthState, Credentials, TokenResponse } from '../interfaces';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { preserveWhitespacesDefault } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +34,25 @@ export class AuthService {
       tap(() => this.setError(null)),
       switchMap((credentials) =>
         this.http.post<TokenResponse>(this.apiUrl + '/signup', credentials).pipe(
+          tap(() => this.setUser(credentials)),
+          catchError((errorResponse) => {
+            console.log(errorResponse);
+            this.setError(errorResponse.error.errors.join());
+            return NEVER;
+          })
+        )
+      )
+    )
+    .subscribe((response) => {
+      const { token } = response;
+      this.setToken(token);
+    })
+
+    this.login$.pipe(
+      takeUntilDestroyed(),
+      tap(() => this.setError(null)),
+      switchMap((credentials) =>
+        this.http.post<TokenResponse>(this.apiUrl + '/login', credentials).pipe(
           tap(() => this.setUser(credentials)),
           catchError((errorResponse) => {
             console.log(errorResponse);
