@@ -12,6 +12,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         button: true,
         'button--outline': buttonOutline,
         'button--doable': buttonDoable,
+        'button--secondary': buttonSecondary,
+        'button--sm': buttonSm,
         'is-active': isActive,
       }"
       [disabled]="isDisabled"
@@ -26,6 +28,8 @@ export class ButtonComponent {
   @Input() textButton!: string;
   @Input() buttonOutline: boolean = false;
   @Input() buttonDoable: boolean = false;
+  @Input() buttonSecondary: boolean = false;
+  @Input() buttonSm: boolean = false;
   @Input() isActive: boolean = false;
   @Input() isDisabled: boolean = false;
   @Input() type: string = 'button';
