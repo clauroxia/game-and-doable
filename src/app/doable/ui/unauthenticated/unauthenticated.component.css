@@ -1,0 +1,20 @@
+.container-auth {
+  display: flex;
+  max-width: var(--width-xs, 320px);
+  flex-direction: column;
+  gap: var(--spacing-2, 8px);
+  align-self: stretch;
+  margin: auto;
+}
+
+.frame-button {
+  display: flex;
+  padding: var(--spacing-1, 4px) 0px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-8, 32px);
+  align-self: stretch;
+
+  border-radius: var(--rounded-lg, 8px);
+  background: var(--muted, #F5F5F5);
+}
