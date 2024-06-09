@@ -14,6 +14,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         'button--doable': buttonDoable,
         'is-active': isActive,
       }"
+      [disabled]="isDisabled"
       (click)="handleClick()"
     >
       {{ textButton }}
@@ -26,6 +27,7 @@ export class ButtonComponent {
   @Input() buttonOutline: boolean = false;
   @Input() buttonDoable: boolean = false;
   @Input() isActive: boolean = false;
+  @Input() isDisabled: boolean = false;
   @Input() type: string = 'button';
   @Output() clicked = new EventEmitter<void>();
 
