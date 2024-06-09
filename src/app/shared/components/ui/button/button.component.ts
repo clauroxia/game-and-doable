@@ -8,7 +8,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   template: `
     <button
       [type]="type"
-      [ngClass]="{ button: true, 'button--outline': buttonOutline }"
+      [ngClass]="{
+        button: true,
+        'button--outline': buttonOutline,
+        'button--doable': buttonDoable,
+        'is-active': isActive,
+      }"
       (click)="handleClick()"
     >
       {{ textButton }}
@@ -19,7 +24,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() textButton!: string;
   @Input() buttonOutline: boolean = false;
-  @Input() type: string = "button";
+  @Input() buttonDoable: boolean = false;
+  @Input() isActive: boolean = false;
+  @Input() type: string = 'button';
   @Output() clicked = new EventEmitter<void>();
 
   handleClick() {

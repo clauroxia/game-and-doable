@@ -1,5 +1,6 @@
 .button {
   height: 2.5rem;
+  width: 100%;
   padding: var(--spacing-2) var(--spacing-4);
   justify-content: center;
   align-items: center;
@@ -31,4 +32,27 @@
 
 .button--outline:hover {
   background-color: var(--background-hover);
+}
+
+.button--doable,
+.button--doable:hover {
+  display: flex;
+  width: var(--spacing-24, 96px);
+  padding: var(--spacing-1, 4px) var(--spacing-3, 12px);
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: var(--rounded-lg, 8px);
+  background: var(--muted, #F5F5F5);
+  
+  font-size: var(--font-base);
+  color: var(--muted-foreground);
+  line-height: var(--leading-7);
+  font-weight: 400;
+}
+
+.is-active,
+.is-active:hover {
+  background: var(--background, #FFF);
+  font-weight: 600;
 }
