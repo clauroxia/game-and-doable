@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../shared/components/ui/button/button.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../data-access/auth.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
