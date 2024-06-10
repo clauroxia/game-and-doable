@@ -14,12 +14,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         'button--doable': buttonDoable,
         'button--secondary': buttonSecondary,
         'button--sm': buttonSm,
+        'button--icon': buttonIcon,
         'is-active': isActive,
       }"
       [disabled]="isDisabled"
       (click)="handleClick()"
     >
       {{ textButton }}
+      <ng-content></ng-content>
     </button>
   `,
   styleUrl: './button.component.css',
@@ -30,6 +32,7 @@ export class ButtonComponent {
   @Input() buttonDoable: boolean = false;
   @Input() buttonSecondary: boolean = false;
   @Input() buttonSm: boolean = false;
+  @Input() buttonIcon: boolean = false;
   @Input() isActive: boolean = false;
   @Input() isDisabled: boolean = false;
   @Input() type: string = 'button';
