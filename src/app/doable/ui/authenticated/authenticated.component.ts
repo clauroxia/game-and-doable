@@ -150,7 +150,7 @@ export class AuthenticatedComponent {
     this.taskService.listTasks().subscribe((tasks: TaskResponse[]) => {
       this.tasks = tasks;
       this.getFilteredTasks();
-      this.switchSortValue(this.sortByValue);
+      this.sortValueOptions(this.sortByValue);
     });
   }
 
@@ -187,7 +187,7 @@ export class AuthenticatedComponent {
         this.tasks.push(task);
         this.formDoable.reset();
         this.getFilteredTasks();
-        this.switchSortValue(this.sortByValue);
+        this.sortValueOptions(this.sortByValue);
         this.error = false;
         console.log(this.tasks);
       });
@@ -239,10 +239,10 @@ export class AuthenticatedComponent {
 
   sortBy(event: Event) {
     this.sortByValue = (event.target as HTMLSelectElement).value;
-    this.switchSortValue(this.sortByValue);
+    this.sortValueOptions(this.sortByValue);
   }
 
-  switchSortValue(sortByValue: string) {
+  sortValueOptions(sortByValue: string) {
     switch (sortByValue) {
       case 'value1': // Due Date (old first)
         this.filteredTasks.sort(
