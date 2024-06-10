@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { NEVER, Observable, Subject, catchError, switchMap, tap } from 'rxjs';
+import { NEVER, Subject, catchError, switchMap, tap } from 'rxjs';
 import { AuthState, Credentials, TokenResponse } from '../interfaces';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
