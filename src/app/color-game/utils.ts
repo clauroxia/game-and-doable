@@ -1,4 +1,4 @@
-import { Color } from './interfaces';
+import { Color, RgbTarget } from './interfaces';
 
 export function getRandomColor(): Color {
   return [
@@ -8,16 +8,17 @@ export function getRandomColor(): Color {
   ];
 }
 
-export function rgbString(color: Color) {
+export function rgbString(color: Color): RgbTarget {
   const [r, g, b] = color;
-  return `rgb(${r}, ${g}, ${b})`;
+  const rgb = `rgb(${r}, ${g}, ${b})`;
+  return { rgb, r, g, b };
 }
 
 export function getRandomColors(n: number): Color[] {
   return [...Array(n)].map(() => getRandomColor());
 }
 
-export function getStatus(
+export function getStatus(  
   attempts: number[],
   target: number,
   numOfColors: number

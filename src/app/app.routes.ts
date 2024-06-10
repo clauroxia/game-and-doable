@@ -1,19 +1,29 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ColorGameComponent } from './color-game/color-game.component';
-import { DoableComponent } from './doable/doable.component';
+import { LoginComponent } from './doable/login/login.component';
+import { SignupComponent } from './doable/signup/signup.component';
+
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadComponent: () => import('./home/home.component')
   },
   {
     path: 'color-game',
-    component: ColorGameComponent,
+    loadComponent: () => import('./color-game/color-game.component')
   },
   {
     path: 'doable',
-    component: DoableComponent,
+    loadComponent: () => import('./doable/doable.component'),
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'signup',
+        component: SignupComponent
+      },
+    ]
   },
 ];
