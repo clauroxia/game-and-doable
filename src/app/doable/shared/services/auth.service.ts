@@ -137,7 +137,7 @@ export class AuthService {
     }));
   }
 
-  // isLoggedIn() {
-  //   return this.currentUser() ? true : false;
-  // }
+  resetError() {
+    this.setError(null);
+  }
 }
