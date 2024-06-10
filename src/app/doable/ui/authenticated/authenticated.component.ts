@@ -28,6 +28,12 @@ import { TaskEdited, TaskResponse } from '../../shared/interfaces';
           placeholder="dd / mm / yyyy"
           formControlName="due_date"
         />
+        <p
+          [ngStyle]="error ? { display: 'block' } : { display: 'none' }"
+          class="error-message"
+        >
+          {{ messageError }}
+        </p>
         <app-button textButton="Add task" type="submit" />
       </form>
       <div class="container-tasks">
@@ -121,6 +127,9 @@ export class AuthenticatedComponent {
   formDoable!: FormGroup;
   showOnlyPending = false;
   showOnlyImportant = false;
+  sortByValue: string = 'value1';
+  error: boolean = false;
+  messageError = 'Task is required';
 
   constructor(
     private fb: FormBuilder,
@@ -129,9 +138,9 @@ export class AuthenticatedComponent {
   ) {}
 
   ngOnInit() {
-    this.formDoable = this.fb.nonNullable.group({
+    this.formDoable = this.fb.group({
       title: ['', Validators.required],
-      due_date: ['', Validators.required],
+      due_date: [''],
     });
 
     this.getTasks();
@@ -140,11 +149,8 @@ export class AuthenticatedComponent {
   getTasks(): void {
     this.taskService.listTasks().subscribe((tasks: TaskResponse[]) => {
       this.tasks = tasks;
-      tasks.sort(
-        (a, b) =>
-          new Date(a.due_date).getTime() - new Date(b.due_date).getTime()
-      );
-      this.filteredTasks = tasks;
+      this.getFilteredTasks();
+      this.switchSortValue(this.sortByValue);
     });
   }
 
@@ -172,16 +178,21 @@ export class AuthenticatedComponent {
   }
 
   handleSubmit() {
+    console.log(this.formDoable.value);
     if (this.formDoable.valid) {
-      this.taskService
-        .createTask(this.formDoable.getRawValue())
-        .subscribe((task) => {
-          this.tasks.push(task);
-          this.formDoable.reset();
-          console.log(this.tasks);
-        });
+      if (!this.formDoable.value.due_date) {
+        this.formDoable.value.due_date = '2023-12-31';
+      }
+      this.taskService.createTask(this.formDoable.value).subscribe((task) => {
+        this.tasks.push(task);
+        this.formDoable.reset();
+        this.getFilteredTasks();
+        this.switchSortValue(this.sortByValue);
+        this.error = false;
+        console.log(this.tasks);
+      });
     } else {
-      console.log('Formulario no válido');
+      this.error = true;
     }
   }
 
@@ -205,7 +216,6 @@ export class AuthenticatedComponent {
 
   handleLogout() {
     this.authService.logout$.next();
-    console.log(this.tasks);
   }
 
   handleToggle(id: number, statusType: string) {
@@ -228,8 +238,11 @@ export class AuthenticatedComponent {
   }
 
   sortBy(event: Event) {
-    const sortByValue = (event.target as HTMLSelectElement).value;
+    this.sortByValue = (event.target as HTMLSelectElement).value;
+    this.switchSortValue(this.sortByValue);
+  }
 
+  switchSortValue(sortByValue: string) {
     switch (sortByValue) {
       case 'value1': // Due Date (old first)
         this.filteredTasks.sort(
@@ -245,11 +258,9 @@ export class AuthenticatedComponent {
         break;
       case 'value3': // Alphabetical (a-z)
         this.filteredTasks.sort((a, b) => a.title.localeCompare(b.title));
-        console.log(this.filteredTasks);
         break;
       case 'value4': // Alphabetical (z-a)
         this.filteredTasks.sort((a, b) => b.title.localeCompare(a.title));
-        console.log(this.filteredTasks);
         break;
       default:
         break;
