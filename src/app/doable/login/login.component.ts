@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../shared/components/ui/button/button.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../data-access/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ import { AuthService } from '../data-access/auth.service';
       <app-button textButton="Enter" type="submit" />
     </form>
   `,
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   fb = inject(FormBuilder);

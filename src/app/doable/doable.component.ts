@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AuthenticatedComponent } from './ui/authenticated/authenticated.component';
 import { UnauthenticatedComponent } from './ui/unauthenticated/unauthenticated.component';
-import { AuthService } from './data-access/auth.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-doable',
@@ -12,15 +12,14 @@ import { AuthService } from './data-access/auth.service';
       <h1 class="title">Doable</h1>
       <p class="description">Add and filter your most important tasks</p>
       @if (authService.currentUser()) {
-        <app-authenticated />
+      <app-authenticated />
       } @else {
-        <app-unauthenticated />
+      <app-unauthenticated />
       }
     </div>
   `,
   styleUrl: './doable.component.css',
 })
-
 export default class DoableComponent {
   authService = inject(AuthService);
 }
