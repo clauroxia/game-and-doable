@@ -135,12 +135,12 @@ export class AuthenticatedComponent {
     });
 
     this.getTasks();
-    }
+  }
     
-    getTasks(): void {
-      this.taskService.listTasks().subscribe((tasks: TaskResponse[]) => {
-        this.tasks = tasks;
-        this.filteredTasks = tasks;
+  getTasks(): void {
+    this.taskService.listTasks().subscribe((tasks: TaskResponse[]) => {
+      this.tasks = tasks;
+      this.filteredTasks = tasks;
     });
   }
 

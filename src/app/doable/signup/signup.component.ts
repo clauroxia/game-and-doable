@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../shared/components/ui/button/button.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -32,12 +32,16 @@ export class SignupComponent {
   authService = inject(AuthService);
 
   form = this.fb.nonNullable.group({
-    email: [''],
-    password: [''],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
   });
 
   onSubmit() {
-    console.log(this.form.getRawValue());
-    this.authService.signup$.next(this.form.getRawValue());
+    if(this.form.valid) {
+      console.log(this.form.getRawValue());
+      this.authService.signup$.next(this.form.getRawValue());
+    } else {
+      console.log("Formulario no válido");
+    }
   }
 }
