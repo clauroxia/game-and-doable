@@ -1,5 +1,5 @@
 import { Component, effect, inject } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { ButtonComponent } from '../../../shared/components/ui/button/button.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

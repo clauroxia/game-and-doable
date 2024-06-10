@@ -33,7 +33,9 @@ export class TaskService {
   }
 
   listTasks(): Observable<TaskResponse[]> {
-    return this.http.get<TaskResponse[]>(this.apiUrl, {headers: this.getHeadersBearer()});
+    return this.http.get<TaskResponse[]>(this.apiUrl, {
+      headers: this.getHeadersBearer(),
+    });
   }
 
   createTask(task: Task): Observable<TaskResponse> {

@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../../shared/components/ui/button/button.component';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TaskService } from '../../services/task.service';
+import { TaskService } from '../../shared/services/task.service';
 import { CommonModule } from '@angular/common';
-import { TaskEdited, TaskResponse } from '../../interfaces';
+import { TaskEdited, TaskResponse } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-authenticated',
@@ -136,11 +136,14 @@ export class AuthenticatedComponent {
 
     this.getTasks();
   }
-    
+
   getTasks(): void {
     this.taskService.listTasks().subscribe((tasks: TaskResponse[]) => {
       this.tasks = tasks;
-      tasks.sort((a, b) => new Date(a.due_date).getTime() - new Date(b.due_date).getTime());
+      tasks.sort(
+        (a, b) =>
+          new Date(a.due_date).getTime() - new Date(b.due_date).getTime()
+      );
       this.filteredTasks = tasks;
     });
   }
@@ -149,7 +152,7 @@ export class AuthenticatedComponent {
     this.showOnlyPending = (event.target as HTMLInputElement).checked;
     this.getFilteredTasks();
   }
-  
+
   toggleImportantFilter(event: Event) {
     this.showOnlyImportant = (event.target as HTMLInputElement).checked;
     this.getFilteredTasks();
@@ -226,13 +229,19 @@ export class AuthenticatedComponent {
 
   sortBy(event: Event) {
     const sortByValue = (event.target as HTMLSelectElement).value;
-  
+
     switch (sortByValue) {
       case 'value1': // Due Date (old first)
-        this.filteredTasks.sort((a, b) => new Date(a.due_date).getTime() - new Date(b.due_date).getTime());
+        this.filteredTasks.sort(
+          (a, b) =>
+            new Date(a.due_date).getTime() - new Date(b.due_date).getTime()
+        );
         break;
       case 'value2': // Due Date (new first)
-        this.filteredTasks.sort((a, b) => new Date(b.due_date).getTime() - new Date(a.due_date).getTime());
+        this.filteredTasks.sort(
+          (a, b) =>
+            new Date(b.due_date).getTime() - new Date(a.due_date).getTime()
+        );
         break;
       case 'value3': // Alphabetical (a-z)
         this.filteredTasks.sort((a, b) => a.title.localeCompare(b.title));
