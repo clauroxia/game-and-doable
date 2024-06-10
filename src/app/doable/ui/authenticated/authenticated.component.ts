@@ -34,7 +34,7 @@ import { TaskEdited, TaskResponse } from '../../interfaces';
         <div class="sort">
           <div>
             <p>Sort by</p>
-            <select name="select">
+            <select name="select" (change)="sortBy($event)">
               <option value="value1" selected>Due Date (old first)</option>
               <option value="value2">Due Date (new first)</option>
               <option value="value3">Alphabetical (a-z)</option>
@@ -131,7 +131,7 @@ export class AuthenticatedComponent {
   ngOnInit() {
     this.formDoable = this.fb.nonNullable.group({
       title: ['', Validators.required],
-      due_date: [''],
+      due_date: ['', Validators.required],
     });
 
     this.getTasks();
@@ -140,6 +140,7 @@ export class AuthenticatedComponent {
   getTasks(): void {
     this.taskService.listTasks().subscribe((tasks: TaskResponse[]) => {
       this.tasks = tasks;
+      tasks.sort((a, b) => new Date(a.due_date).getTime() - new Date(b.due_date).getTime());
       this.filteredTasks = tasks;
     });
   }
@@ -221,5 +222,28 @@ export class AuthenticatedComponent {
       };
     }
     this.handleEdit(id, this.taskEdited);
+  }
+
+  sortBy(event: Event) {
+    const sortByValue = (event.target as HTMLSelectElement).value;
+  
+    switch (sortByValue) {
+      case 'value1': // Due Date (old first)
+        this.filteredTasks.sort((a, b) => new Date(a.due_date).getTime() - new Date(b.due_date).getTime());
+        break;
+      case 'value2': // Due Date (new first)
+        this.filteredTasks.sort((a, b) => new Date(b.due_date).getTime() - new Date(a.due_date).getTime());
+        break;
+      case 'value3': // Alphabetical (a-z)
+        this.filteredTasks.sort((a, b) => a.title.localeCompare(b.title));
+        console.log(this.filteredTasks);
+        break;
+      case 'value4': // Alphabetical (z-a)
+        this.filteredTasks.sort((a, b) => b.title.localeCompare(a.title));
+        console.log(this.filteredTasks);
+        break;
+      default:
+        break;
+    }
   }
 }
