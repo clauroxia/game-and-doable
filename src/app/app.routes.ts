@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './doable/login/login.component';
+import { SignupComponent } from './doable/signup/signup.component';
+
 
 export const routes: Routes = [
   {
@@ -11,6 +14,16 @@ export const routes: Routes = [
   },
   {
     path: 'doable',
-    loadComponent: () => import('./doable/doable.component')
+    loadComponent: () => import('./doable/doable.component'),
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'signup',
+        component: SignupComponent
+      },
+    ]
   },
 ];

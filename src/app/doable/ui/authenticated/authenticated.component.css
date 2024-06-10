@@ -1,0 +1,89 @@
+.form-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2, 8px);
+  max-width: var(--width-xs, 320px);
+  margin: auto;
+  margin-bottom: var(--spacing-8, 32px);
+}
+
+.container-tasks {
+  margin: auto;
+  display: flex;
+  max-width: var(--width-3xl, 768px);
+  align-items: center;
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  padding: var(--spacing-4, 16px) var(--spacing-2, 8px);
+  align-self: stretch;
+  gap: var(--spacing-4, 16px);
+}
+
+.sort div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2, 8px);
+}
+
+.sort div p {
+  color: var(--foreground, #171717);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.checkboxes {
+  display: flex;
+  gap: var(--spacing-2, 8px);
+}
+
+.task-list {
+  display: flex;
+  padding: var(--spacing-2, 8px) var(--spacing-4, 16px);
+  flex-direction: column;
+  flex: 1 0 0;
+}
+
+.task-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4, 16px);
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
+
+.task-description label {
+  font-size: var(--font-lg);
+  line-height: var(--leading-8);
+}
+
+.task-description p {
+  font-size: var(--font-sm);
+  line-height: var(--leading-6);
+  padding-left: 22px;
+}
+
+.svg-buttons {
+  display: flex;
+  gap: var(--spacing-2, 8px);
+}
+
+.svg-icon {
+  width: 24px;
+}
+
