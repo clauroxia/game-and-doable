@@ -87,3 +87,7 @@
   width: 24px;
 }
 
+.error-message {
+  color: red;
+  font-size: var(--font-sm);
+}

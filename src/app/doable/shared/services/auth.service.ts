@@ -54,7 +54,7 @@ export class AuthService {
               }),
               catchError((errorResponse) => {
                 console.log(errorResponse);
-                this.setError(errorResponse.error.errors.join());
+                this.setError(errorResponse.error.errors.join(' / '));
                 return NEVER;
               })
             )
@@ -80,7 +80,7 @@ export class AuthService {
               }),
               catchError((errorResponse) => {
                 console.log(errorResponse);
-                this.setError(errorResponse.error.errors.join());
+                this.setError(errorResponse.error.errors.join(' / '));
                 return NEVER;
               })
             )
