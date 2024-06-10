@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../shared/components/ui/button/button.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -37,11 +37,11 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    if(this.form.valid) {
+    if (this.form.valid) {
       console.log(this.form.getRawValue());
       this.authService.login$.next(this.form.getRawValue());
     } else {
-      console.log("Formulario no válido");
+      console.log('Formulario no válido');
     }
   }
 }

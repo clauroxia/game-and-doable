@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AuthenticatedComponent } from './ui/authenticated/authenticated.component';
 import { UnauthenticatedComponent } from './ui/unauthenticated/unauthenticated.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-doable',
