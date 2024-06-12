@@ -2,7 +2,7 @@ import { Component, effect, inject } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { ButtonComponent } from '../../../shared/components/ui/button/button.component';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-unauthenticated',
@@ -14,17 +14,15 @@ import { RouterModule } from '@angular/router';
         <app-button
           textButton="Login"
           [buttonDoable]="doable"
-          [isActive]="isActive"
-          [isDisabled]="isActive"
-          (clicked)="showForm()"
+          [isActive]="router.url === '/doable/login' ? true : false"
+          [isDisabled]="router.url === '/doable/login' ? true : false"
           routerLink="login"
         />
         <app-button
           textButton="Signup"
           [buttonDoable]="doable"
-          [isActive]="!isActive"
-          [isDisabled]="!isActive"
-          (clicked)="showForm()"
+          [isActive]="router.url === '/doable/signup' ? true : false"
+          [isDisabled]="router.url === '/doable/signup' ? true : false"
           routerLink="signup"
         />
       </div>
@@ -37,12 +35,9 @@ export class UnauthenticatedComponent {
   doable = true;
   isActive = true;
   authService = inject(AuthService);
+  router = inject(Router)
 
   constructor() {
     effect(() => console.log(this.authService.state()));
-  }
-
-  showForm() {
-    this.isActive = !this.isActive;
   }
 }

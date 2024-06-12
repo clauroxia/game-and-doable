@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <button
       [type]="type"
@@ -15,9 +16,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         'button--secondary': buttonSecondary,
         'button--sm': buttonSm,
         'button--icon': buttonIcon,
-        'is-active': isActive,
       }"
       [disabled]="isDisabled"
+      [routerLinkActive]="isActive ? 'is-active' : ''"
       (click)="handleClick()"
     >
       {{ textButton }}

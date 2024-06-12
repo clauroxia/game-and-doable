@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule],
   template: `
     <div class="wrapper">
       <header class="header">
@@ -13,7 +13,7 @@ import { RouterOutlet } from '@angular/router';
         >
         <nav class="nav">
           @for (item of navigation; track item.to) {
-          <a class="nav-item" [href]="item.to">
+          <a class="nav-item" [routerLink]="item.to" routerLinkActive="current">
             {{ item.name }}
           </a>
           }
