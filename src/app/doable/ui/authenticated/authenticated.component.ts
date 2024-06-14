@@ -52,13 +52,13 @@ import { TaskEdited, TaskResponse } from '../../shared/interfaces';
             <label class="checkboxes"
               ><input
                 type="checkbox"
-                (change)="togglePendingFilter($event)"
+                (change)="toggleFilter($event, 'pending')"
               />Only pending</label
             >
             <label class="checkboxes"
               ><input
                 type="checkbox"
-                (change)="toggleImportantFilter($event)"
+                (change)="toggleFilter($event, 'important')"
               />Only important</label
             >
           </div>
@@ -74,7 +74,7 @@ import { TaskEdited, TaskResponse } from '../../shared/interfaces';
         <div class="task-list">
           <ul>
             @for (task of filteredTasks; track $index) {
-            <li class="task-item">
+            <li class="task-item" data-testid="task">
               <div class="task-description">
                 <label class="checkboxes"
                   ><input
@@ -154,13 +154,12 @@ export class AuthenticatedComponent {
     });
   }
 
-  togglePendingFilter(event: Event) {
-    this.showOnlyPending = (event.target as HTMLInputElement).checked;
-    this.getFilteredTasks();
-  }
-
-  toggleImportantFilter(event: Event) {
-    this.showOnlyImportant = (event.target as HTMLInputElement).checked;
+  toggleFilter(event: Event, taskStatus: string) {
+    if (taskStatus === 'pending') {
+      this.showOnlyPending = (event.target as HTMLInputElement).checked;
+    } else {
+      this.showOnlyImportant = (event.target as HTMLInputElement).checked;
+    }
     this.getFilteredTasks();
   }
 
@@ -218,10 +217,10 @@ export class AuthenticatedComponent {
     this.authService.logout$.next();
   }
 
-  handleToggle(id: number, statusType: string) {
+  handleToggle(id: number, taskStatus: string) {
     const taskFound = this.tasks.find((task) => task.id === id);
     if (taskFound) {
-      if (statusType === 'important') {
+      if (taskStatus === 'important') {
         this.isImportant = !taskFound?.important;
         this.isCompleted = taskFound?.completed;
       } else {

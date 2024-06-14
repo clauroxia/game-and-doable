@@ -1,11 +1,10 @@
 import {
   HttpClient,
-  HttpHeaderResponse,
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Task, TaskEdited, TaskResponse } from '../interfaces';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({

@@ -33,7 +33,7 @@ export class AuthService {
   constructor() {
     const token = localStorage.getItem(this.tokenKey);
     const user = localStorage.getItem(this.user);
-    console.log(token, user);
+    // console.log(token, user);
     if (token && user) {
       this.setToken(token);
       this.setUser(user);
