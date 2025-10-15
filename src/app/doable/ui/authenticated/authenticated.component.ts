@@ -177,7 +177,6 @@ export class AuthenticatedComponent {
   }
 
   handleSubmit() {
-    console.log(this.formDoable.value);
     if (this.formDoable.valid) {
       if (!this.formDoable.value.due_date) {
         this.formDoable.value.due_date = '2023-12-31';
@@ -188,7 +187,6 @@ export class AuthenticatedComponent {
         this.getFilteredTasks();
         this.sortValueOptions(this.sortByValue);
         this.error = false;
-        console.log(this.tasks);
       });
     } else {
       this.error = true;
@@ -201,7 +199,6 @@ export class AuthenticatedComponent {
         task.id === id ? { ...task, ...update } : task
       );
       this.getFilteredTasks();
-      console.log(this.tasks);
     });
   }
 
@@ -209,7 +206,6 @@ export class AuthenticatedComponent {
     this.taskService.deleteTask(id).subscribe(() => {
       this.tasks = this.tasks.filter((task) => task.id !== id);
       this.getFilteredTasks();
-      console.log(this.tasks);
     });
   }
 

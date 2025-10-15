@@ -50,7 +50,7 @@ import { ButtonComponent } from '../shared/components/ui/button/button.component
         <button
           [ngStyle]="{
             'background-color': bgColor(rgbString(color).rgb),
-            'opacity': buttonOpacity[$index]
+            opacity: buttonOpacity[$index]
           }"
           (click)="handleAttempt($index)"
           class="square"
@@ -62,7 +62,6 @@ import { ButtonComponent } from '../shared/components/ui/button/button.component
   `,
   styleUrl: './color-game.component.css',
 })
-
 export default class ColorGameComponent implements OnInit {
   rgbString = rgbString;
   buttonOpacity: Opacity[] = [];
@@ -112,7 +111,6 @@ export default class ColorGameComponent implements OnInit {
     }
     this.status = getStatus(this.attempts, this.target, this.numOfColors);
     this.isDisabled = (this.status === 'win' || this.status === 'lose') ?? true;
-    // console.log(this.attempts);
   }
 
   bgColor(rgb: string) {

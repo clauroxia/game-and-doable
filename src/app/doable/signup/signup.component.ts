@@ -23,7 +23,9 @@ import { CommonModule } from '@angular/common';
         <label for="password">Password</label>
         <input id="password" type="password" formControlName="password" />
       </div>
-      <p *ngIf="authService.error()" class="error-message">{{authService.error()}}</p>
+      <p *ngIf="authService.error()" class="error-message">
+        {{ authService.error() }}
+      </p>
       <app-button textButton="Create" type="submit" />
     </form>
   `,
@@ -43,7 +45,8 @@ export class SignupComponent {
   }
 
   onSubmit() {
-    console.log(this.form.getRawValue());
+    // console.log(this.form.getRawValue());
+    if (this.form.invalid) return;
     this.authService.signup$.next(this.form.getRawValue());
   }
 }

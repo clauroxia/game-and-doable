@@ -53,7 +53,6 @@ export class AuthService {
                 localStorage.setItem(this.user, credentials.email);
               }),
               catchError((errorResponse) => {
-                console.log(errorResponse);
                 this.setError(errorResponse.error.errors.join(' / '));
                 return NEVER;
               })
@@ -79,7 +78,6 @@ export class AuthService {
                 localStorage.setItem(this.user, credentials.email);
               }),
               catchError((errorResponse) => {
-                console.log(errorResponse);
                 this.setError(errorResponse.error.errors.join(' / '));
                 return NEVER;
               })
