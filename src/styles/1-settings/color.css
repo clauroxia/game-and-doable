@@ -82,7 +82,7 @@
   --muted: var(--neutral-100);
   --muted-foreground: var(--neutral-600);
   --muted-foreground-subtle: hsl(0 0% 46%);
-  --secondary: var(--neutral-100);
+  --secondary: var(--neutral-200);
   --secondary-foreground: var(--neutral-800);
   --ring: var(--neutral-300);
   --primary-hover: hsl(263, 70%, 60%);
