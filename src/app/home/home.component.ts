@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <div class="wrapper">
       <img src="assets/angular.svg" width="96" />
-      <h1 class="title">Angular Evaluation</h1>
+      <h1 class="title">Angular App</h1>
       <p class="name">Claudia Berríos</p>
       <div class="buttons">
         <app-button

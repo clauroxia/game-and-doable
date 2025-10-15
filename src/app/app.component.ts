@@ -8,9 +8,7 @@ import { RouterModule } from '@angular/router';
   template: `
     <div class="wrapper">
       <header class="header">
-        <a class="logo" href="/"
-          ><img src="assets/angular.svg" />Angular Evaluation</a
-        >
+        <a class="logo" href="/"><img src="assets/angular.svg" />Angular App</a>
         <nav class="nav">
           @for (item of navigation; track item.to) {
           <a class="nav-item" [routerLink]="item.to" routerLinkActive="current">
