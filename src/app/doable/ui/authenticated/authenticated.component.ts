@@ -44,7 +44,7 @@ import { TaskEdited, TaskResponse } from '../../shared/interfaces';
               <option value="value1" selected>Due Date (old first)</option>
               <option value="value2">Due Date (new first)</option>
               <option value="value3">Alphabetical (a-z)</option>
-              <option value="value3">Alphabetical (z-a)</option>
+              <option value="value4">Alphabetical (z-a)</option>
             </select>
           </div>
           <div>
