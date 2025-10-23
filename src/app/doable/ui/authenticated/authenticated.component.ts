@@ -52,13 +52,15 @@ import { TaskEdited, TaskResponse } from '../../shared/interfaces';
             <label class="checkboxes"
               ><input
                 type="checkbox"
-                (change)="toggleFilter($event, 'pending')"
+                name="pending"
+                (change)="toggleFilter($event)"
               />Only pending</label
             >
             <label class="checkboxes"
               ><input
                 type="checkbox"
-                (change)="toggleFilter($event, 'important')"
+                name="important"
+                (change)="toggleFilter($event)"
               />Only important</label
             >
           </div>
@@ -154,11 +156,12 @@ export class AuthenticatedComponent {
     });
   }
 
-  toggleFilter(event: Event, taskStatus: string) {
-    if (taskStatus === 'pending') {
-      this.showOnlyPending = (event.target as HTMLInputElement).checked;
+  toggleFilter(event: Event) {
+    const ev = event.target as HTMLInputElement;
+    if (ev.name === 'pending') {
+      this.showOnlyPending = ev.checked;
     } else {
-      this.showOnlyImportant = (event.target as HTMLInputElement).checked;
+      this.showOnlyImportant = ev.checked;
     }
     this.getFilteredTasks();
   }
