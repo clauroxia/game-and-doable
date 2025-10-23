@@ -27,6 +27,6 @@ import { RouterLink } from '@angular/router';
   `,
   styleUrl: './home.component.css',
 })
-export default class HomeComponent {
+export class HomeComponent {
   outline: boolean = true;
 }

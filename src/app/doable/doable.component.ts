@@ -20,6 +20,6 @@ import { AuthService } from './shared/services/auth.service';
   `,
   styleUrl: './doable.component.css',
 })
-export default class DoableComponent {
+export class DoableComponent {
   authService = inject(AuthService);
 }

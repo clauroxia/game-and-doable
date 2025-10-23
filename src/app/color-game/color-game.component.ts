@@ -62,7 +62,7 @@ import { ButtonComponent } from '../shared/components/ui/button/button.component
   `,
   styleUrl: './color-game.component.css',
 })
-export default class ColorGameComponent implements OnInit {
+export class ColorGameComponent implements OnInit {
   rgbString = rgbString;
   buttonOpacity: Opacity[] = [];
   isDisabled = false;
