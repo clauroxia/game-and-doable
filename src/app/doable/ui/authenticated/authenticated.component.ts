@@ -182,7 +182,9 @@ export class AuthenticatedComponent {
   handleSubmit() {
     if (this.formDoable.valid) {
       if (!this.formDoable.value.due_date) {
-        this.formDoable.value.due_date = '2023-12-31';
+        const date = new Date();
+        const yearStr = String(date.getFullYear());
+        this.formDoable.value.due_date = `${yearStr}-12-31`;
       }
       this.taskService.createTask(this.formDoable.value).subscribe((task) => {
         this.tasks.push(task);
