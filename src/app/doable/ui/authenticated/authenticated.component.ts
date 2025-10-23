@@ -27,6 +27,7 @@ import { TaskEdited, TaskResponse } from '../../shared/interfaces';
           type="date"
           placeholder="dd / mm / yyyy"
           formControlName="due_date"
+          [min]="minDate"
         />
         <p
           [ngStyle]="error ? { display: 'block' } : { display: 'none' }"
@@ -132,6 +133,7 @@ export class AuthenticatedComponent {
   sortByValue: string = 'value1';
   error: boolean = false;
   messageError = 'Task is required';
+  minDate!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -140,6 +142,12 @@ export class AuthenticatedComponent {
   ) {}
 
   ngOnInit() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    this.minDate = `${year}-${month}-${day}`;
+
     this.formDoable = this.fb.group({
       title: ['', Validators.required],
       due_date: [''],
